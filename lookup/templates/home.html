@@ -4,4 +4,53 @@
 
 <h1>HOME PAGE</h1>
 
+{{ zipcode }}
+
+
+{% if api %}
+
+	{% if api == "Error" %}
+		There was an error, please try again...
+	{% else %}
+
+		<div class="jumbotron {{ category_color }}">
+		  <p>DATE: {{ api.0.DateObserved }}</p>
+		  <h1 class="display-4">{{ api.0.Category.Name }}</h1>
+		  <p class="lead">{{ api.0.ReportingArea }} AIR QUALITY: {{ api.0.AQI }}</p>
+
+		  <p>{{ category_description }}</p>
+
+		  
+
+		  <a class="btn btn-primary btn-lg" href="https://www.airnow.gov/aqi/" role="button">Learn more about air quality</a>
+		</div>
+
+		
+
+	{% endif %}
+
+{% endif %}
+
+<!-- {% for data in api %}
+
+<p>{{ data.AQI }}</p>
+
+{% endfor %} -->
+
 {% endblock %}
+
+
+<!-- OZONE DESCRIPTIONS:
+Good: (0-50) Air Quality is considered satisfactory and air pollution poses little or no risk.
+
+Moderate: (51-100) Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are....
+
+USG: (101-150) Although general public is not likely to be affected at this AQI range, people with lung disease, older adults and children are a greater...
+
+Unhealthy: (151-200) Everyone may begin to experience helath effects; members of sensitive groups may experience more serious health effects.
+
+Very Unhealthy: (201-300) Health alert: everyone may experience more serious health effects.
+
+Hazardous: (301-500) Health warnings of emergencey conditions. The entire population is more likely to be affected.
+
+ -->
